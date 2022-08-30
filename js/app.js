@@ -6,9 +6,20 @@ const loadPhone = async (searchText) => {
 }
 
 const displayPhone = phones => {
-    console.log(phones);
+    // console.log(phones);
     const phoneContainer = document.getElementById('phone-container');
     phoneContainer.textContent = '';
+    //display 21 phones only
+    phones = phones.slice(0, 21);
+    //no result found display
+    const noResult = document.getElementById('no-result-message')
+    if (phones.length === 0) {
+        noResult.classList.remove('d-none');
+    }
+    else {
+        noResult.classList.add('d-none');
+    }
+    //display searched phones
     phones.forEach(phone => {
         const phoneDiv = document.createElement('div');
         phoneDiv.classList.add('col');
